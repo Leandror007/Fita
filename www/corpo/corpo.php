@@ -51,7 +51,7 @@ echo '<meta http-equiv="refresh" content="1 ; URL=../../index.php" />';
 
           <header class="main-header">
             <!-- Logo -->
-            <a href="../../index2.html" class="logo">
+            <a href="../fitas/detalhes.php" class="logo">
               <!-- mini logo for sidebar mini 50x50 pixels -->
               <span class="logo-mini"><b>S</b>OG</span>
               <!-- logo for regular state and mobile devices -->
@@ -146,11 +146,11 @@ echo '<meta http-equiv="refresh" content="1 ; URL=../../index.php" />';
               </a>
               <ul class="treeview-menu">
                 <li><a href="../fitas/index.php"><i class="fa fa-circle-o"></i>Fita</a></li>
-                <li><a href="../excluidos/index.php"><i class="fa fa-circle-o"></i> Fechados</a></li>
+                <li><a href="../fitasE/index.php"><i class="fa fa-circle-o"></i>Fitas Deletar</a></li>
               </ul>
             </li>
 
-            <li><a href="../fitas/detalhes.php" target="_Banck"><i class="fa fa-book"></i> <span>Detalhes</span></a></li>
+            <li><a href="../fitas/detalhes.php"><i class="fa fa-book"></i> <span>Detalhes</span></a></li>
 
             <li class="treeview">
               <a href="#">
@@ -180,38 +180,41 @@ echo '<meta http-equiv="refresh" content="1 ; URL=../../index.php" />';
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                 <li><a href="../passagem/index.php"><i class="fa fa-circle-o"></i>Passagem</a></li>
-                <li><a href="../EnviarTabela/index.php"><i class="fa fa-circle-o"></i> Enviar</a></li>
+                 <li><a href="../passagem/index.php"><i class="fa fa-circle-o"></i>Passagem</a></li>               
               </ul>
             </li>
 
 
-                <li class="treeview">
-            <a href="#">
-              <i class="fa fa-group"></i> <span>Agentes</span>   <span class="pull-right-container">
-                <i class="fa fa-angle"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="../agentes/index.php"><i class="fa fa-circle-o text-green"></i>Usuario</a></li>
-            </ul>
-          </li>
 
  <?php  }else{
 
+  }  
 
 ?>
+     
+<li class="header">Fechados</li>
+<li><a href="../CommVault/index.php"><i class="fa fa-circle-o text-red"></i> <span>CommVault Simpana</span></a></li>
+<li><a href="../Backup/index.php"><i class="fa fa-circle-o text-yellow"></i> <span>Backup Exec</span></a></li>
+<li><a href="../HP/index.php"><i class="fa fa-circle-o text-aqua"></i> <span>HP Data Protector</span></a></li>
+<li><a href="../Net/index.php"><i class="fa fa-circle-o text-green"></i> <span>Net Backup</span></a></li>     
 
- <li><a href="../maps/map.php" target="_Banck"><i class="fa fa-book"></i> <span>Mapa</span></a></li>
+ <li class="header"></li>
 
-<?php
 
-  }  ?>
-          
+  <li class="treeview">
+    <a href="#">
+      <i class="fa fa-group"></i> <span>Agentes</span>   <span class="pull-right-container">
+        <i class="fa fa-angle"></i>
+          </span>
+    </a>
+        <ul class="treeview-menu">
+          <li><a href="../agentes/index.php"><i class="fa fa-circle-o text-green"></i>Usuario</a></li>
+            </ul>
+  </li>
 
-          <li class="treeview"><a href="../logout.php"><i class="fa fa-fw fa-sign-in"></i><span>Sair </span></a> 
+<li class="treeview"><a href="../logout.php"><i class="fa fa-fw fa-sign-in"></i><span>Sair </span></a> 
 
-                <li class="header"></li>
+               
          
               </ul>
             </section>

@@ -4,7 +4,7 @@ require_once '../../db_connect.php';
 
 $output = array('data' => array());
 
-$sql = "SELECT * FROM tbpassagem WHERE _status != 'Resolvido'";
+$sql = "SELECT * FROM tbpassagem WHERE aplbackup LIKE 'HP Data Protector' AND _status LIKE 'Resolvido'";
 
 
 $query = $connect->query($sql);
@@ -34,10 +34,8 @@ while ($row = $query->fetch_assoc()) {
 	    Ação <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	 	 <li><a type="button"  onclick="alterar('.$row['id'].')"> <i class="fa fa-fw fa-plus"></i> Notas</a></li>	    
-	     <li><a type="button" data-toggle="modal" data-target="#editMemberModal" onclick="editMember('.$row['id'].')"> <span class="glyphicon glyphicon-edit"></span> Editar</a></li>
 	     <li><a type="button" data-toggle="modal" data-target="#viewMemberModal" onclick="viewMember('.$row['id'].')"> <span class="glyphicon glyphicon-eye-open"></span> Visualizar</a></li>
-	    <li><a type="button" data-toggle="modal" data-target="#removeMemberModal" onclick="removeMember('.$row['id'].')"> <span class="glyphicon glyphicon-trash"></span> Remover</a></li>	    
+	   <li><a type="button"  onclick="alterar('.$row['id'].')"> <i class="fa fa-fw fa-plus"></i> Notas</a></li>
 	  </ul>
 	</div>
 		';

@@ -4,6 +4,10 @@ $date = date('Y-m-d H:i:s');
 
 ?>
 
+<style type="text/css">
+  table{ margin: auto; }
+</style>
+
 <?php include "../corpo/corpo.php";  ?>
 
   <!-- =============================================== -->
@@ -67,7 +71,7 @@ if(isset($_POST['Submit'])){
 		echo "Você cadastratrou um total de ".$totalSheet." Agentes".
 
 		$html="<table border='1'>";
-		$html.="<tr><th>Ambiente</th><th>Bar Code</th><th>Utilização</th><th>Status</th><th>Cadastrado</th></tr>";
+		$html.="<tr><th>Ambiente</th><th>Bar Code</th><th>Utilização</th><th>Status</th></tr>";
 
 		/* For Loop for all sheets */
 		for($i=0;$i<$totalSheet;$i++){

@@ -1,5 +1,12 @@
 <?php include "../corpo/corpo.php";  ?>
 
+<script>
+  function alterar(id){       
+    window.open('notas.php?id='+id, 'Pagina', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=50, LEFT=170, WIDTH=780, HEIGHT=580')+id;
+  }
+
+</script>
+
   <!-- =============================================== -->
 
           <!-- Content Wrapper. Contains page content -->
@@ -7,8 +14,8 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
               <h1>
-                Sistema de Fitas
-                <small>Registro</small>
+                Backup Exec
+                <small>Fechados</small>
               </h1>
               <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -28,21 +35,22 @@
 
 				<div class="removeMessages"></div>
 
-				<button class="btn btn-success pull pull-right" data-toggle="modal" data-target="#addMember" id="addMemberModalBtn">
-					<span class="glyphicon glyphicon-plus-sign"></span>	Adicionar Fita
-				</button>
-
+			 
 				<br /> <br /> <br />
 
 				<table class="table" id="manageMemberTable">					
 					<thead>
 						<tr>
 							<th>#</th>
-              <th>Ambiente</th>                         
-              <th>BarCode</th>
-              <th>Utilizacao</th>               
+              <th>Aplicação</th>                         
+              <th>Cliente</th>
+              <th>Host</th>  
+              <th>Chamado</th>
+              <th>SO</th>    
+              <th>Data</th>              
               <th>Status</th>
               <th>Opcao</th>
+              
 						</tr>
 					</thead>
 				</table>
@@ -50,165 +58,10 @@
 		</div>
 	</div>
 
-	<!-- add modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="addMember">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><span class="glyphicon glyphicon-plus-sign"></span>	Adicionar</h4>
-	      </div>
-	      
-	     <form class="form-horizontal" action="acao/adicionar.php" method="POST" id="createMemberForm">
-
-        <div class="modal-body">
-          <div class="messages"></div>
-
-        <div class="form-group"> <!--/here teh addclass has-error will appear -->
-          <label for="ambiente" class="col-sm-2 control-label">Ambiente</label>
-          <div class="col-sm-10">             
-        <select class="form-control"id="ambiente" name="ambiente">
-              <option value="">~~ SELECIONE ~~</option>
-              <option value="CSCSIMPANA">CSCSIMPANA</option>
-              <option value="CSCBACKUPEXE">CSCBACKUPEXE</option>
-              <option value="BANCOSEMEAR 238">BANCOSEMEAR 238</option>
-              <option value="BANCOSEMEAR GRANJA">BANCOSEMEAR GRANJA</option>
-              <option value="IBMLTO4">IBMLTO4</option>
-              <option value="IBMLTO6">IBMLTO6</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="barcode" class="col-sm-2 control-label">Bar code</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="barcode" name="barcode" placeholder="barcode">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="dtutilizacao" class="col-sm-2 control-label">Utilização</label>
-          <div class="col-sm-10">
-            <input type="date" class="form-control" id="dtutilizacao" name="dtutilizacao" placeholder="dtutilizacao">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="_status" class="col-sm-2 control-label">Status</label>
-          <div class="col-sm-4">
-            <select class="form-control" name="_status" id="_status">
-              <option value="">~~ SELECIONE ~~</option>
-              <option value="Em Uso">Em Uso</option>
-              <option value="Disponivel">Disponivel</option>
-              <option value="Problema">Problema</option>
-            </select>
-          </div>
-        </div>          
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-primary">Salvar Registro</button>
-        </div>
-        </form> 
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<!-- /add modal -->
-
-	<!-- remove modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="removeMemberModal">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><span class="glyphicon glyphicon-trash"></span> Remover Fita</h4>
-	      </div>
-	      <div class="modal-body">
-	        <p>Você realmente deseja remover ?</p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-	        <button type="button" class="btn btn-primary" id="removeBtn">Salvar Alterações</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<!-- /remove modal -->
-
-
-
-
-
-	<!-- edit modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="editMemberModal">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span> Editar Fita</h4>
-	      </div>
-
-		<form class="form-horizontal" action="acao/atualizar.php" method="POST" id="updateMemberForm">	      
-
-	      <div class="modal-body">
-	        	
-	        <div class="edit-messages"></div>
-
-			  <div class="form-group"> <!--/here teh addclass has-error will appear -->
-			    <label for="editambiente" class="col-sm-2 control-label">Ambiente</label>
-			    <div class="col-sm-10"> 
-			      <select class="form-control" id="editambiente" name="editambiente">
-              <option value="">~~ SELECIONE ~~</option>
-              <option value="CSCSIMPANA">CSCSIMPANA</option>
-              <option value="CSCBACKUPEXE">CSCBACKUPEXE</option>
-              <option value="BANCOSEMEAR 238">BANCOSEMEAR 238</option>
-              <option value="BANCOSEMEAR GRANJA">BANCOSEMEAR GRANJA</option>
-              <option value="IBMLTO4">IBMLTO4</option>
-              <option value="IBMLTO6">IBMLTO6</option>
-            </select>
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label for="editog" class="col-sm-2 control-label">Utilizado</label>
-			    <div class="col-sm-10">
-			      <input type="date" class="form-control" id="editdtutilizacao" name="editdtutilizacao" placeholder="dtutilizacao">
-			    </div>
-			  </div>
-
-			  <div class="form-group">
-			    <label for="editregional" class="col-sm-2 control-label">BarCode</label>
-			    <div class="col-sm-10">
-			       <input type="text" class="form-control" id="editbarcode" name="editbarcode" placeholder="barcode">
-			    </div>
-			  </div>
-
-			  <div class="form-group">
-			    <label for="editnotas" class="col-sm-2 control-label">Status</label>
-			    <div class="col-sm-10">
-			    	<select class="form-control" name="edit_status" id="edit_status">
-              <option value="">~~ SELECIONE ~~</option>
-              <option value="Em Uso">Em Uso</option>
-              <option value="Disponivel">Disponivel</option>
-              <option value="Problema">Problema</option>
-            </select>
-			    </div>
-			  </div>
-			 		
-	      </div>
-	      <div class="modal-footer editMemberModal">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-	        <button type="submit" class="btn btn-primary">Salvar Mudanças</button>
-	      </div>
-	      </form>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<!-- /edit modal -->
-
-
-
 
 <!-- view modal -->
   <div class="modal fade" tabindex="-1" role="dialog" id="viewMemberModal">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -221,33 +74,78 @@
             
           <div class="edit-messages"></div>
 
+         <div class="form-group">
+          <label for="viewaplbackup" class="col-sm-2 control-label">Aplicação</label>
+          <div class="col-sm-3">
+           <input type="text" class="form-control" id="viewaplbackup" name="viewaplbackup" readonly="readonly" placeholder="Cliente">
+          </div>
+        </div> 
+
+        <div class="form-group">
+          <label for="viewcliente" class="col-sm-2 control-label">Cliente</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="viewcliente" name="viewcliente" readonly="readonly" placeholder="Cliente">
+          </div>
+        
+
+        <div class="form-group">
+          <label for="viewhost" class="col-sm-1 control-label">Host</label>
+          <div class="col-sm-4">
+             <input type="text" class="form-control" id="viewhost" name="viewhost" readonly="readonly" placeholder="Host">
+          </div>
+        </div>
+        </div>
+
+         <div class="form-group">
+          <label for="viewnmrotina" class="col-sm-2 control-label">Rotina</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="viewnmrotina" name="viewnmrotina" readonly="readonly" placeholder="Rotina">
+          </div>
+           
+
+        <div class="form-group">
+          <label for="viewchamado" class="col-sm-1 control-label">Chamado</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="viewchamado" name="viewchamado" readonly="readonly" placeholder="Chamado">
+          </div>
+        </div>
+        </div>    
+
         <div class="form-group"> <!--/here teh addclass has-error will appear -->
-          <label for="viewambiente" class="col-sm-2 control-label">Ambiente</label>
-          <div class="col-sm-10"> 
-            <input type="text" class="form-control" id="viewambiente" name="viewambiente" placeholder="ambiente" readonly="readonly">
-        <!-- here the text will apper  -->
+          <label for="viewtiposo" class="col-sm-2 control-label">SO</label>
+        <div class="col-sm-4">   
+          <input type="text" class="form-control" id="viewtiposo" name="viewtiposo" readonly="readonly" placeholder="Chamado">          
+        </div>
+          <div class="form-group"> 
+          <label for="view_status" class="col-sm-1 control-label">Status</label>
+          <div class="col-sm-4"> 
+            <input type="text" class="form-control" id="view_status" name="view_status" placeholder="Status">      
           </div>
         </div>
+        </div>
         <div class="form-group">
-          <label for="viewbarcode" class="col-sm-2 control-label">Bar code</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="viewbarcode" name="viewbarcode" placeholder="barcode" readonly="readonly">
+          <label for="viewdescricao" class="col-sm-2 control-label">Descrição</label>
+          <div class="col-sm-9">
+            <textarea class="form-control" id="viewdescricao" name="viewdescricao" rows="3" placeholder="Texto ..."></textarea>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="viewdtutilizacao" class="col-sm-2 control-label">Utilização</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="viewdtutilizacao" name="viewdtutilizacao" placeholder="dtutilizacao" readonly="readonly">
+         <div class="form-group">
+          <label for="viewdata" class="col-sm-2 control-label">Data</label>
+          <div class="col-sm-4">
+            <input type="date" class="form-control" id="viewdata" name="viewdata" placeholder="Data">
           </div>
-        </div>
+       
 
         <div class="form-group">
-          <label for="view_status" class="col-sm-2 control-label">Status</label>
-          <div class="col-sm-10">
-             <input type="text" class="form-control" id="view_status" name="view_status" placeholder="dtutilizacao">
+          <label for="viewhora" class="col-sm-1 control-label">Hora</label>
+          <div class="col-sm-4">
+            <input type="time" class="form-control" id="viewhora" name="viewhora" placeholder="hora">
           </div>
-        </div>
+        </div>  
+         </div>  
+
+        
  
         </div>
         <div class="modal-footer viewMemberModal">
@@ -442,21 +340,38 @@
     </div><!-- ./wrapper -->
 
 
-	<!-- jquery plugin -->
-	<script type="text/javascript" src="assests/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="custom/js/index.js?<?php echo time(); ?>"></script>
-  <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-  <script src="../../bootstrap/js/bootstrap.min.js"></script>
-  <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-  <script src="../../plugins/fastclick/fastclick.min.js"></script>
-  <script src="../../dist/js/app.min.js"></script>
-  <script src="../../dist/js/demo.js"></script>
-  <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
-  <script src="../../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
-  <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
-  <script src="../../plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 
+	<!-- jquery plugin -->
+	<script type="text/javascript" src="../passagem/assests/jquery/jquery.min.js"></script>
+	<!-- bootstrap js -->
+	
+
+	<!-- include custom index.js -->
+	<script type="text/javascript" src="custom/js/index.js?<?php echo time(); ?>"></script>
+
+
+
+    <!-- jQuery 2.1.4 -->
+    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../../plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+
+    <!-- SweetAlert -->
+    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- Bootstrap-notify -->
+    <script src="../../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="../../plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script src="customer.js?<?php echo time(); ?>"></script>
 
   </body>
   </html>

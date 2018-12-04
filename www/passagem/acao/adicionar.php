@@ -2,6 +2,10 @@
 
 require_once '../../db_connect.php';
 
+session_start();
+
+$agente = $_SESSION['login'];
+
 $data1 = date('Y-m-d H:i:s');
 //if form is submitted
 if($_POST) {	
@@ -19,7 +23,7 @@ if($_POST) {
 	$hora   		= $_POST['hora'];
 	$_status 		= $_POST['_status'];
 
-	$sql = "INSERT INTO tbpassagem (aplbackup, cliente, host, nmrotina, chamado, tiposo, descricao, data, hora, datahora, _status) VALUES ('$aplbackup', '$cliente', '$host', '$nmrotina', '$chamado', '$tiposo', '$descricao', '$data', '$hora','$data1', '$_status')";
+	$sql = "INSERT INTO tbpassagem (aplbackup, cliente, host, nmrotina, chamado, tiposo, descricao, data, hora, datahora, _status, agente) VALUES ('$aplbackup', '$cliente', '$host', '$nmrotina', '$chamado', '$tiposo', '$descricao', '$data', '$hora','$data1', '$_status', '$agente')";
 	$query = $connect->query($sql);
 
 	if($query === TRUE) {			

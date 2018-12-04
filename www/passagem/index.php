@@ -1,5 +1,12 @@
 <?php include "../corpo/corpo.php";  ?>
 
+<script>
+  function alterar(id){       
+    window.open('notas.php?id='+id, 'Pagina', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=50, LEFT=170, WIDTH=780, HEIGHT=580')+id;
+  }
+
+</script>
+
   <!-- =============================================== -->
 
           <!-- Content Wrapper. Contains page content -->
@@ -46,6 +53,7 @@
               <th>Data</th>              
               <th>Status</th>
               <th>Opcao</th>
+              
 						</tr>
 					</thead>
 				</table>
@@ -71,7 +79,7 @@
           <label for="aplbackup" class="col-sm-2 control-label">Aplicação</label>
           <div class="col-sm-3">
             <select class="form-control" name="aplbackup" id="aplbackup">
-              <option value="">~~ SELECIONE ~~</option>
+              <option value="">~~~~~~ SELECIONE ~~~~~~</option>
               <option value="CommVault Simpana">CommVault Simpana</option>
               <option value="Backup Exec">Backup Exec</option>
               <option value="HP Data Protector">HP Data Protector</option>
@@ -97,15 +105,15 @@
         </div>
 
          <div class="form-group">
-          <label for="nmrotina" class="col-sm-2 control-label">Rotina</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="nmrotina" name="nmrotina" placeholder="Rotina">
+          <label for="nmrotina" class="col-sm-2 control-label">Nome da Shedule</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="nmrotina" name="nmrotina" placeholder="Nome da Shedule">
           </div>
            
 
         <div class="form-group">
           <label for="chamado" class="col-sm-1 control-label">Chamado</label>
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <input type="text" class="form-control" id="chamado" name="chamado" placeholder="Chamado">
           </div>
         </div>
@@ -115,7 +123,7 @@
           <label for="tiposo" class="col-sm-2 control-label">SO</label>
           <div class="col-sm-4">             
         <select class="form-control" id="tiposo" name="tiposo">
-              <option value="">~~ SELECIONE ~~</option>
+              <option value="">~~~~~~ SELECIONE ~~~~~~</option>
               <option value="Windows">Windows</option>
               <option value="Linux">Linux</option>
               <option value="Banco">Banco</option>              
