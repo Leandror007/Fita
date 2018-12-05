@@ -27,7 +27,7 @@ mysql_select_db($dbname);
 Highcharts.chart('container', { 
 	chart: { type: 'column' 
 	}, title: { 
-		text: 'Grafico de Alarmes Anual' 
+		text: 'Grafico de Fita' 
 		}, 
 		subtitle: { 
 			text: 'Relação' 
@@ -54,12 +54,12 @@ Highcharts.chart('container', {
 						pointPadding: 0.2, borderWidth: 0 } }, 
 						series: [
 					{ 
-        name: 'Disco', 
+        name: 'CSCSIMPANA', 
         data: [<?php $mesesD = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
         foreach($mesesD as $meseD) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseD' and year(data_reg) = year(Now()) and alarme = 'Disco' "); 
+          $pC = mysql_query("SELECT COUNT(ambiente) from tbfitabackup WHERE MONTH(dtutilizacao) = '$meseD' and year(dtutilizacao) = year(Now()) and ambiente = 'CSCSIMPANA' "); 
           while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
+            $rowsC = $semaC['COUNT(ambiente)']; 
             echo $rowsC; 
             if($meseD <= 11){ 
               echo ','; 
@@ -71,12 +71,12 @@ Highcharts.chart('container', {
       }, 
 
       { 
-        name: 'Memoria', 
+        name: 'CSCBACKUPEXE', 
         data: [<?php $meseMsM = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
         foreach($meseMsM as $meseMD) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseMD' and year(data_reg) = year(Now()) and alarme = 'Memoria' "); 
+          $pC = mysql_query("SELECT COUNT(ambiente) from tbfitabackup WHERE MONTH(dtutilizacao) = '$meseMD' and year(dtutilizacao) = year(Now()) and ambiente = 'CSCBACKUPEXE' "); 
         while($semaC = mysql_fetch_array($pC)){ 
-          $rowsC = $semaC['COUNT(alarme)']; 
+          $rowsC = $semaC['COUNT(ambiente)']; 
           echo $rowsC; 
           if($meseMD <= 11){ 
             echo ','; 
@@ -87,12 +87,12 @@ Highcharts.chart('container', {
       }, 
 
       { 
-        name: 'Processador', 
+        name: 'BANCOSEMEAR 238', 
         data: [<?php $mesesP = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
         foreach($mesesP as $meseP) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseP' and year(data_reg) = year(Now()) and alarme = 'Processamento' "); 
+          $pC = mysql_query("SELECT COUNT(ambiente) from tbfitabackup WHERE MONTH(dtutilizacao) = '$meseP' and year(dtutilizacao) = year(Now()) and ambiente = 'BANCOSEMEAR 238' "); 
           while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
+            $rowsC = $semaC['COUNT(ambiente)']; 
             echo $rowsC; 
             if($meseP <= 11){ 
               echo ','; 
@@ -102,12 +102,12 @@ Highcharts.chart('container', {
       }, 
 
       { 
-        name: 'Intermitencia', 
+        name: 'BANCOSEMEAR GRANJA', 
         data: [<?php $mesesIn = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
         foreach($mesesP as $meseIn) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseIn' and year(data_reg) = year(Now()) and alarme = 'Intermitencia' "); 
+          $pC = mysql_query("SELECT COUNT(ambiente) from tbfitabackup WHERE MONTH(dtutilizacao) = '$meseIn' and year(dtutilizacao) = year(Now()) and ambiente = 'BANCOSEMEAR GRANJA' "); 
           while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
+            $rowsC = $semaC['COUNT(ambiente)']; 
             echo $rowsC; 
             if($meseIn <= 11){ 
               echo ','; 
@@ -116,167 +116,29 @@ Highcharts.chart('container', {
       },
 
       { 
-        name: 'CPU', 
+        name: 'IBMLTO4', 
         data: [<?php $mesesIn = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
         foreach($mesesP as $meseIn) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseIn' and year(data_reg) = year(Now()) and alarme = 'CPU' "); 
+          $pC = mysql_query("SELECT COUNT(ambiente) from tbfitabackup WHERE MONTH(dtutilizacao) = '$meseIn' and year(dtutilizacao) = year(Now()) and ambiente = 'IBMLTO4' "); 
           while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
+            $rowsC = $semaC['COUNT(ambiente)']; 
             echo $rowsC; 
             if($meseIn <= 11){ 
               echo ','; }else if($meseIn = 12){ 
                 echo ' '; } } } ?> ] 
-      }, 
+      },
 
       { 
-        name: 'Processo',
+        name: 'IBMLTO6', 
         data: [<?php $mesesIn = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
         foreach($mesesP as $meseIn) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseIn' and year(data_reg) = year(Now()) and alarme = 'Processo' "); 
+          $pC = mysql_query("SELECT COUNT(ambiente) from tbfitabackup WHERE MONTH(dtutilizacao) = '$meseIn' and year(dtutilizacao) = year(Now()) and ambiente = 'IBMLTO6' "); 
           while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
+            $rowsC = $semaC['COUNT(ambiente)']; 
             echo $rowsC; 
             if($meseIn <= 11){ 
-              echo ','; 
-            }else if($meseIn = 12){ 
-              echo ' '; 
-            } } } ?> ] 
-      }, 
-
-      { 
-        name: 'Host', 
-        data: [<?php $mesesIn = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseIn) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseIn' and year(data_reg) = year(Now()) and alarme = 'Host' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-          echo $rowsC; 
-          if($meseIn <= 11){ 
-            echo ','; 
-          }else if($meseIn = 12){ 
-            echo ' '; 
-          } } } ?> ] 
-      }, 
-
-      { 
-        name: 'Rede', 
-        data: [<?php $mesesInd = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseInd) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseInd' and year(data_reg) = year(Now()) and alarme = 'Rede' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-            echo $rowsC; 
-            if($meseInd <= 11){ 
-              echo ','; 
-            }else if($meseInd = 12){ 
-              echo ' '; 
-            } } } ?>]
-      },
-
-      { 
-        name: 'SQL', 
-        data: [<?php $mesesInd = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseInd) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseInd' and year(data_reg) = year(Now()) and alarme = 'SQL' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-            echo $rowsC; 
-            if($meseInd <= 11){ 
-              echo ','; 
-            }else if($meseInd = 12){ 
-              echo ' '; 
-            } } } ?>]
-      },
-
-      { 
-        name: 'SQL-SERVER', 
-        data: [<?php $mesesInd = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseInd) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseInd' and year(data_reg) = year(Now()) and alarme = 'SQL-SERVER' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-            echo $rowsC; 
-            if($meseInd <= 11){ 
-              echo ','; 
-            }else if($meseInd = 12){ 
-              echo ' '; 
-            } } } ?>]
-      },
-
-       { 
-        name: 'Backup', 
-        data: [<?php $mesesInd = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseInd) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseInd' and year(data_reg) = year(Now()) and alarme = 'Backup' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-            echo $rowsC; 
-            if($meseInd <= 11){ 
-              echo ','; 
-            }else if($meseInd = 12){ 
-              echo ' '; 
-            } } } ?>]
-      }, 
-
-      { 
-        name: 'Roboot', 
-        data: [<?php $mesesInd = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseInd) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseInd' and year(data_reg) = year(Now()) and alarme = 'Roboot' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-            echo $rowsC; 
-            if($meseInd <= 11){ 
-              echo ','; 
-            }else if($meseInd = 12){ 
-              echo ' '; 
-            } } } ?>]
-      }, 
-
-       { 
-        name: 'Oracle', 
-        data: [<?php $mesesInd = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseInd) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseInd' and year(data_reg) = year(Now()) and alarme = 'Oracle' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-            echo $rowsC; 
-            if($meseInd <= 11){ 
-              echo ','; 
-            }else if($meseInd = 12){ 
-              echo ' '; 
-            } } } ?>]
-      }, 
-
-      { 
-        name: 'Controller', 
-        data: [<?php $mesesInd = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseInd) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseInd' and year(data_reg) = year(Now()) and alarme = 'Controller' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-            echo $rowsC; 
-            if($meseInd <= 11){ 
-              echo ','; 
-            }else if($meseInd = 12){ 
-              echo ' '; 
-            } } } ?>]
-      },        
-
-      { 
-        name: 'Outros', 
-        data: [<?php $mesesInd = array('1','2','3','4','5','6','7','8','9','10','11','12'); 
-        foreach($mesesP as $meseInd) { 
-          $pC = mysql_query("SELECT COUNT(alarme) from alarmes WHERE MONTH(data_reg) = '$meseInd' and year(data_reg) = year(Now()) and alarme = 'Outros' "); 
-          while($semaC = mysql_fetch_array($pC)){ 
-            $rowsC = $semaC['COUNT(alarme)']; 
-            echo $rowsC; 
-            if($meseInd <= 11){ 
-              echo ','; 
-            }else if($meseInd = 12){
-              echo ' ';
-            } 
-        } } ?>] 
+              echo ','; }else if($meseIn = 12){ 
+                echo ' '; } } } ?> ] 
       }
 
 

@@ -35,14 +35,14 @@ $cor[20] = '#8B4513';
 
 $i = 0;
 
-$sql = "SELECT alarme, COUNT(alarme) AS total FROM alarmes WHERE Month(data_reg) LIKE Month(Now()) AND YEAR(data_reg) LIKE YEAR(Now()) group by alarme";
+$sql = "SELECT ambiente, COUNT(ambiente) AS total FROM tbfitabackup WHERE Month(dtutilizacao) LIKE Month(Now()) AND YEAR(dtutilizacao) LIKE YEAR(Now()) group by ambiente";
 //$sql = "SELECT * FROM tbl_total";
 $resultado = mysql_query($sql);
 while($row = mysql_fetch_object($resultado)){
-   $alarme = $row->alarme;
+   $ambiente = $row->ambiente;
    $total  = $row->total;
 
-   $alarmes[$i] = $alarme;
+   $tbfitabackup[$i] = $ambiente;
    $totais[$i] =  $total;
    $i = $i + 1;
 }
@@ -89,7 +89,7 @@ Highcharts.chart('container', {
     type: 'pie'
   },
   title: {
-    text: 'Grafico Pizza Mensal'
+    text: 'Grafico Fita'
   },
   tooltip: {
     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -116,7 +116,7 @@ Highcharts.chart('container', {
           $k = $i;
           for($i = 0; $i < $k; $i++){
         ?>
-          {name: '<?php echo $alarmes[$i] ?>',  y: <?php echo $totais[$i] ?>},
+          {name: '<?php echo $tbfitabackup[$i] ?>',  y: <?php echo $totais[$i] ?>},
  
        <?php }  ?>
      
